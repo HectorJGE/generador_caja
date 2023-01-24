@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import FormBox from './components/FormBox';
+import Box from './components/Box'
+import { useState } from 'react';
+
+        
 
 function App() {
+
+  const [currentBoxes,setCurrentBox] = useState([])
+
+  const newB = (box)=>{
+    let boxes=[...currentBoxes]
+    boxes.push(box)
+    setCurrentBox(boxes)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <FormBox onNewBox={newB}/>
+      <Box cajas={currentBoxes}/>
+    </>
   );
 }
 
